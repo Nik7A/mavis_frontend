@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "reset-css": "^2.2.1"
   },
   "devDependencies": {
     "@storybook/react": "^3.3.14",
