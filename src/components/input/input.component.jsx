@@ -6,7 +6,24 @@ import classnames from 'classnames';
 import { SIZES } from '../../constants/ui-kit';
 import css from './input.module.css'
 
+const propTypes = forbidExtraProps({
+	size: PropTypes.oneOf(Object.values(SIZES)),
+	className: PropTypes.string,
+	value: PropTypes.string,
+	placeholder: PropTypes.string,
+	onChange: PropTypes.func
+});
+
 export class Input extends React.Component {
+	constructor(){
+		super();
+		this.state = {text: ''};
+	};
+	
+	handleChange = e => {
+		this.setState({text: e.target.value});
+	};
+	
 	render() {
 		const { size } = this.props;
 
@@ -17,16 +34,11 @@ export class Input extends React.Component {
 			[css.size_l]: size === SIZES.L,
 			[css.size_xl]: size === SIZES.XL
 		});
-
+		
 		return (
-			<input {...this.props} className={classNames}/>
+			<input {...this.props} className={classNames} />
 		);
 	}
 }
 
-Input.propTypes = forbidExtraProps({
-	size: PropTypes.oneOf(Object.values(SIZES)),
-	className: PropTypes.string,
-	value: PropTypes.string,
-	onChange: PropTypes.func
-});
+Input.propTypes = propTypes;
